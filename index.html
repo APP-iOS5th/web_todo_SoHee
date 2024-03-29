@@ -11,16 +11,6 @@
 </head>
 
 <body>
-    <style>
-         #tooltip {
-    background-color: #333;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-size: 13px;
-  }
-    </style>
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-6">
@@ -28,8 +18,12 @@
             <!--입력부분-->
             <div class="input-group mb-3 mt-3">
                 <input type="text" class="form-control" id="todoInput" placeholder="오늘 할 일">
-                <button id="button" aria-describedby="tooltip">추 가</button>
-                <div id="tooltip" role="tooltip">적어봅시다>.< </div>
+                <button id="button">추 가</button>
+            </div>
+            <!--리스트-->
+            <u1 class="list-group" id="todoList">
+                <li class="List-item">밥먹기</li>
+            </u1>
 
 
 
@@ -46,6 +40,16 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous">
     </script>
+
+    <script>
+        const button = document.querySelector('#button');
+      
+        // Pass the button, the tooltip, and some options, and Popper will do the
+        // magic positioning for you:
+        Popper.createPopper(button, {
+          placement: 'right',
+        });
+      </script>
 </body>
 
 </html>
