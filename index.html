@@ -21,8 +21,7 @@
                     <button class="btn btn-primary" id="addTodo">추 가</button>
                 </div>
                 <!--리스트-->
-                <u1 class="list-group" id="todoList">
-                    <li class="List-item">리스트</li>
+                <u1 class="list-group" id="todoList">            
                 </u1>
             </div>
         </div>
@@ -53,11 +52,26 @@
 
 
             function addTodo(text) {
-                var list = document.getElementById('todoList')
-                var item = document.createElement('li')
+                var list = document.getElementById('todoList');
+                var item = document.createElement('li');
                 item.innerText = text
-                item.classList.add('list-group-item')
+                item.classList.add('list-group-item');
                 list.appendChild(item)
+
+                const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.classList.add('form-check-input', 'me-2');
+            checkbox.addEventListener('change', function () {
+                if (this.checked) {
+                    item.classList.add('text-decoration-line-through', 'text-muted');
+                } else {
+                    item.classList.remove('text-decoration-line-through', 'text-muted');
+                }
+                storeTodos();
+            });
+
+            item.appendChild(checkbox);
+            list.appendChild(item);
             }
             function storeTodos() {
                 var todos = []
