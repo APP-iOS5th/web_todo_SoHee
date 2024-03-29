@@ -52,13 +52,12 @@
 
 
             function addTodo(text) {
-                var list = document.getElementById('todoList');
-                var item = document.createElement('li');
-                item.innerText = text
-                item.classList.add('list-group-item');
-                list.appendChild(item)
-
-                const checkbox = document.createElement('input');
+            const list = document.getElementById('todoList');
+            const item = document.createElement('li');
+            item.classList.add('list-group-item');
+             
+            <!--체크박스 추가-->
+            const checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
             checkbox.classList.add('form-check-input', 'me-2');
             checkbox.addEventListener('change', function () {
@@ -71,22 +70,26 @@
             });
 
             item.appendChild(checkbox);
+                const textNode = document.createTextNode(text);
+                item.appendChild(textNode);
             list.appendChild(item);
-            }
+        }
+
             function storeTodos() {
                 var todos = []
-                var todoList = document.getElementById('todoList')
+                var todoList = document.getElementById('todoList');
                 for (var i = 0; i < todoList.children.length; i++) {
                     todos.push(todoList.children[i].innerText.trim())
                 }
                 console.log(todos)
-                localStorage.setItem('todos', JSON.stringify(todos))
+                localStorage.setItem('todos', JSON.stringify(todos));
             }
+
             function loadTodos() {
-                var todos = JSON.parse(localStorage.getItem('todos'))
+                var todos = JSON.parse(localStorage.getItem('todos'));
                 if (todos) {
                     todos.forEach(function (todo) {
-                        addTodo(todo)
+                        addTodo(todo);
                     })
                 }
             }
